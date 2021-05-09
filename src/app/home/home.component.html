@@ -1,0 +1,67 @@
+
+<div class="row" style="display: flex; align-items: baseline;">
+    <h2 style="margin-right: 30px">Student</h2>
+    <a class="new-link primary" style="font-weight: 900;color: #000" routerLink="./student/new">
+        Add Student
+    </a>
+</div>
+<table mat-table [dataSource]="students$" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id </th>
+        <td mat-cell *matCellDef="let student"> {{student.id}} </td>
+    </ng-container>
+    <ng-container matColumnDef="firstname">
+        <th mat-header-cell *matHeaderCellDef>Firstname </th>
+        <td mat-cell *matCellDef="let student"> {{student.firstname}} </td>
+    </ng-container>
+    <ng-container matColumnDef="lastname">
+        <th mat-header-cell *matHeaderCellDef>Lastname </th>
+        <td mat-cell *matCellDef="let student"> {{student.lastname}} </td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email </th>
+        <td mat-cell *matCellDef="let student"> {{student.email}} </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>Edit </th>
+        <td mat-cell *matCellDef="let student">
+            <a [routerLink]="['./student',  student.id]">
+                Edit
+            </a>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+
+<!-- <div class="row mt-2">
+    <div class="col-md-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>E-Mail</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of students$ | async">
+                    <td>{{ student.id }}</td>
+                    <td>{{ student.firstname }}</td>
+                    <td>{{ student.lastname }}</td>
+                    <td>{{ student.email }}</td>
+                    <td>
+                        <a class="btn btn-ok" [routerLink]="['./',  student.id]">
+                            Edit
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div> -->

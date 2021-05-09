@@ -1,0 +1,42 @@
+<form [formGroup]="form">
+    <div class="row">
+        <mat-form-field>
+            <mat-label>Firstname</mat-label>
+            <input matInput placeholder="Firstname" formControlName="firstname">
+        </mat-form-field>
+        <div class="error" *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)">
+            <span *ngIf="firstname.hasError('required')">
+                Firstname is required.
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <mat-form-field>
+            <mat-label>Lastname</mat-label>
+            <input matInput placeholder="Lastname" formControlName="lastname">
+        </mat-form-field>
+        <div class="error" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
+            <span *ngIf="lastname.hasError('required')">
+                Lastname is required.
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email">
+        </mat-form-field>
+    </div>
+
+    <div class="form-actions">
+        <button mat-stroked-button type="button" *ngIf="!isEdit" (click)="createStudent()">
+            Create
+        </button>
+        <button mat-stroked-button type="button" color="primary" *ngIf="isEdit" (click)="updateStudent()">
+            Save
+        </button>
+        <button mat-stroked-button type="button" color="warn" *ngIf="isEdit" (click)="removeStudent()">
+            Delete
+        </button>
+    </div>
+</form>
